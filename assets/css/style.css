@@ -1,0 +1,445 @@
+:root{
+  --paper:#FBF8F4;
+  --paper-2:#F3EDE5;
+  --ink:#23201D;
+  --ink-soft:#5C554D;
+  --sage:#CBDBD4;
+  --sage-deep:#34473F;
+  --brick:#B4573A;
+  --brick-dark:#8E4229;
+  --rose:#C08088;
+  --mauve:#C9AFBB;
+  --line:#DFD6C9;
+  --shadow:0 18px 44px -28px rgba(35,32,29,.45);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Karla","Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:400;line-height:1.12;letter-spacing:-.012em}
+h1{font-size:clamp(2.6rem,6.2vw,4.6rem)}
+h2{font-size:clamp(1.95rem,3.9vw,3rem)}
+h3{font-size:clamp(1.25rem,2.1vw,1.6rem)}
+p{max-width:66ch}
+h1,h2,h3,h4,p,li,dd,summary{overflow-wrap:break-word}
+
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+.wrap > *,.split > *,.host-split > *,.contact-grid > *{min-width:0}
+.narrow{width:min(760px,92vw);margin-inline:auto}
+
+:focus-visible{outline:2px solid var(--brick);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- utility bar (Silver Creek) ---------- */
+.utility{
+  background:var(--sage-deep);
+  color:#EDF2EF;
+  font-size:.82rem;
+  letter-spacing:.02em;
+}
+.utility .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:.62rem 0;flex-wrap:wrap;
+}
+.utility a{text-decoration:none;opacity:.92}
+.utility a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.util-contact{display:flex;gap:1.4rem;flex-wrap:wrap}
+.lang{display:flex;align-items:center;gap:.1rem;background:rgba(255,255,255,.12);border-radius:999px;padding:.15rem}
+.lang button{
+  font:inherit;font-size:.78rem;border:0;background:transparent;color:#EDF2EF;
+  padding:.2rem .68rem;border-radius:999px;cursor:pointer;letter-spacing:.06em;
+}
+.lang button[aria-pressed="true"]{background:var(--paper);color:var(--sage-deep);font-weight:600}
+
+/* ---------- header ---------- */
+.masthead{
+  position:sticky;top:0;z-index:40;
+  background:rgba(251,248,244,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.05rem 0}
+.brand{text-decoration:none;display:flex;align-items:center;gap:.85rem;line-height:1;min-width:0}
+.brand-mark{width:52px;height:52px;flex:none;border-radius:50%}
+.brand-text{display:block;min-width:0}
+.brand .name{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:1.72rem;letter-spacing:-.02em;display:block;
+}
+.brand .tag{
+  display:block;font-size:.68rem;color:var(--ink-soft);
+  letter-spacing:.14em;margin-top:.42rem;
+}
+nav.primary{display:flex;align-items:center;gap:2.1rem}
+nav.primary a{
+  text-decoration:none;font-size:.95rem;color:var(--ink-soft);
+  padding-bottom:.2rem;border-bottom:1.5px solid transparent;transition:color .18s,border-color .18s;
+}
+nav.primary a{white-space:nowrap}
+nav.primary a:hover{color:var(--ink)}
+nav.primary a.active{color:var(--ink);border-bottom-color:var(--brick)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:.5rem .8rem;font:inherit;cursor:pointer}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;text-decoration:none;font-size:.94rem;font-weight:500;
+  padding:.86rem 1.7rem;border-radius:2px;border:1.5px solid var(--brick);
+  background:var(--brick);color:#FDF7F3;cursor:pointer;font-family:inherit;
+  transition:background .18s,border-color .18s;
+}
+.btn:hover{background:var(--brick-dark);border-color:var(--brick-dark)}
+.btn.ghost{background:transparent;color:var(--brick)}
+.btn.ghost:hover{background:rgba(180,87,58,.08)}
+.btn.pale{border-color:var(--paper);background:transparent;color:var(--paper)}
+.btn.pale:hover{background:rgba(255,255,255,.14)}
+
+/* ---------- photo frames ---------- */
+.ph{
+  position:relative;overflow:hidden;background:var(--sage);
+  background-image:linear-gradient(152deg,#D6E3DD 0%,#EFE2DC 55%,#E4D8C9 100%);
+  display:grid;place-items:center;
+}
+.ph::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 1px,transparent 1px 7px);
+  opacity:.35;
+}
+.ph svg{width:34%;max-width:96px;opacity:.28;fill:var(--sage-deep);position:relative}
+.ph img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+}
+.ph:has(img)::before{display:none}
+.ph span{
+  position:absolute;bottom:.7rem;left:.8rem;right:.8rem;
+  font-size:.7rem;letter-spacing:.05em;color:var(--sage-deep);
+  opacity:.72;font-style:italic;
+}
+
+/* ---------- hero (Country Lane) ---------- */
+.hero{position:relative;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;min-height:min(78vh,660px)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:5.5rem 5vw 5.5rem 0}
+.hero-copy .script{
+  font-family:"Sacramento",cursive;font-size:2.35rem;color:var(--rose);
+  line-height:1;margin-bottom:.35rem;
+}
+.hero-copy h1{margin-bottom:1.3rem;max-width:12ch}
+.hero-copy p{color:var(--ink-soft);font-size:1.06rem;max-width:44ch;margin-bottom:2.2rem}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-photo{min-height:420px}
+.hero-loaded .hero-copy > *{animation:rise .7s cubic-bezier(.2,.7,.3,1) backwards}
+.hero-loaded .hero-copy > *:nth-child(1){animation-delay:.05s}
+.hero-loaded .hero-copy > *:nth-child(2){animation-delay:.14s}
+.hero-loaded .hero-copy > *:nth-child(3){animation-delay:.23s}
+.hero-loaded .hero-copy > *:nth-child(4){animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- litter strip (Silver Creek) ---------- */
+.strip{background:var(--sage);color:var(--sage-deep);padding:3.2rem 0}
+.strip h2{font-size:1.55rem;margin-bottom:.4rem}
+.strip .lede{font-size:.95rem;opacity:.85;margin-bottom:2rem}
+.litters{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.litter{
+  background:rgba(255,255,255,.62);border-left:3px solid var(--sage-deep);
+  padding:1.35rem 1.5rem;
+}
+.litter .pair{font-family:"Fraunces",Georgia,serif;font-size:1.28rem;margin-bottom:.2rem}
+.litter .breed{font-size:.86rem;opacity:.78;margin-bottom:.9rem}
+.litter dl{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;font-size:.88rem}
+.litter dt{opacity:.7}
+.litter dd{font-weight:500}
+.chip{
+  display:inline-block;font-size:.74rem;letter-spacing:.05em;
+  padding:.24rem .7rem;border-radius:999px;margin-top:1rem;
+}
+.chip.open{background:var(--brick);color:#FDF7F3}
+.chip.wait{background:var(--sage-deep);color:#EDF2EF}
+.chip.soon{background:transparent;color:var(--sage-deep);border:1px solid rgba(52,71,63,.4)}
+.chip.res{background:rgba(52,71,63,.14);color:var(--sage-deep)}
+
+/* ---------- generic sections ---------- */
+section.band{padding:5.5rem 0}
+section.band.tight{padding:4rem 0}
+.pale{background:var(--paper-2)}
+.head{margin-bottom:2.8rem;max-width:56ch}
+.head h2{margin-bottom:.85rem}
+.head p{color:var(--ink-soft)}
+
+/* about split (Orchard Valley warmth) */
+.split{display:grid;grid-template-columns:.92fr 1.08fr;gap:4rem;align-items:center}
+.split .ph{aspect-ratio:4/5}
+.split h2{margin-bottom:1.3rem}
+.split p{color:var(--ink-soft);margin-bottom:1.1rem}
+.sig{font-family:"Sacramento",cursive;font-size:2rem;color:var(--rose);margin-top:.6rem}
+
+/* breeds */
+.breeds{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.breed .ph{aspect-ratio:3/2;margin-bottom:1.15rem}
+.breed h3{margin-bottom:.55rem}
+.breed p{font-size:.95rem;color:var(--ink-soft);margin-bottom:1rem}
+.spec{border-top:1px solid var(--line);font-size:.86rem;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;padding-top:.9rem}
+.spec dt{color:var(--ink-soft)}
+
+/* steps — a real sequence, so numbers earn their place */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.step{position:relative;padding-top:2.9rem;border-top:1px solid var(--line)}
+.step::before{
+  counter-increment:s;content:counter(s);
+  position:absolute;top:.9rem;left:0;
+  font-family:"Fraunces",Georgia,serif;font-size:1.5rem;color:var(--brick);
+}
+.step h3{font-size:1.16rem;margin-bottom:.5rem}
+.step p{font-size:.93rem;color:var(--ink-soft)}
+
+/* quote */
+.quote{background:var(--sage-deep);color:#EDF2EF;padding:5rem 0;text-align:center}
+.quote blockquote{
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.4rem,2.7vw,2.05rem);line-height:1.4;
+  max-width:22ch;margin:0 auto 1.4rem;
+}
+.quote cite{font-style:normal;font-size:.88rem;opacity:.72;letter-spacing:.04em}
+
+/* ---------- puppies page ---------- */
+.litter-block{margin-bottom:4.5rem}
+.litter-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;
+  border-bottom:1px solid var(--line);padding-bottom:1.1rem;margin-bottom:2rem;flex-wrap:wrap;
+}
+.litter-head h3{font-size:1.75rem}
+.litter-head .meta{font-size:.9rem;color:var(--ink-soft)}
+.pups{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.pup .ph{aspect-ratio:1;margin-bottom:.85rem}
+.pup h4{font-family:"Fraunces",Georgia,serif;font-size:1.15rem;margin-bottom:.25rem}
+.pup .detail{font-size:.85rem;color:var(--ink-soft)}
+.pup .chip{margin-top:.6rem}
+
+/* ---------- parents page (Cottonwood) ---------- */
+.parents{display:grid;grid-template-columns:repeat(2,1fr);gap:3.2rem}
+.parent{border:1px solid var(--line);background:#fff;padding:1.5rem}
+.parent .ph{aspect-ratio:4/5;margin-bottom:1.3rem}
+.role{
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brick);margin-bottom:.4rem;
+}
+.parent h3{margin-bottom:.3rem}
+.parent .latin{font-size:.9rem;color:var(--ink-soft);font-style:italic;margin-bottom:1.1rem}
+.parent p{font-size:.93rem;color:var(--ink-soft);margin-bottom:1.2rem}
+.parent .spec{border-top:1px solid var(--line)}
+
+/* ---------- contact page ---------- */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start}
+.field{margin-bottom:1.3rem}
+label{display:block;font-size:.86rem;color:var(--ink-soft);margin-bottom:.4rem}
+input,select,textarea{
+  width:100%;font:inherit;font-size:.95rem;padding:.75rem .9rem;
+  border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink);
+}
+textarea{min-height:140px;resize:vertical}
+.form-note{font-size:.82rem;color:var(--ink-soft);margin-top:1rem}
+.info-card{background:var(--sage);color:var(--sage-deep);padding:2rem}
+.info-card h3{margin-bottom:1.2rem}
+.info-card dl{display:grid;gap:.2rem;font-size:.94rem;margin-bottom:1.6rem}
+.info-card dt{opacity:.72;font-size:.82rem;letter-spacing:.03em}
+.info-card dd{margin-bottom:.85rem}
+.info-card a{color:var(--sage-deep)}
+
+details{border-top:1px solid var(--line);padding:1.1rem 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{
+  cursor:pointer;font-family:"Fraunces",Georgia,serif;font-size:1.1rem;
+  list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--brick);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:.8rem;font-size:.94rem;color:var(--ink-soft)}
+
+/* ---------- page banner for subpages ---------- */
+.banner{background:var(--paper-2);border-bottom:1px solid var(--line);padding:3.6rem 0 3.2rem}
+.banner .script{font-family:"Sacramento",cursive;font-size:1.9rem;color:var(--rose);line-height:1;margin-bottom:.1rem}
+.banner p{color:var(--ink-soft);margin-top:.9rem}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#E6E0D8;padding:4rem 0 2rem;font-size:.93rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;padding-bottom:2.6rem;border-bottom:1px solid rgba(255,255,255,.14)}
+footer h4{font-size:1.05rem;margin-bottom:1rem;color:#fff}
+footer .name{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;color:#fff;display:block;margin-bottom:.7rem}
+.foot-mark{width:66px;height:66px;border-radius:50%;margin-bottom:1rem}
+footer p{color:#B3AAA0;max-width:38ch}
+footer ul{list-style:none;display:grid;gap:.55rem}
+footer a{text-decoration:none;color:#E6E0D8}
+footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.policy{margin-top:2rem;font-size:.82rem;color:#8F877E;display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+
+.page{display:none}
+.page.active{display:block}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding:3.5rem 0 3rem;order:2}
+  .hero-photo{order:1;min-height:330px}
+  .litters,.breeds,.steps,.parents{grid-template-columns:1fr 1fr}
+  .pups{grid-template-columns:1fr 1fr}
+  .split,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .menu-btn{display:block}
+  nav.primary{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--line);padding:.5rem 4vw 1.2rem;
+  }
+  nav.primary.open{display:flex}
+  nav.primary a{padding:.75rem 0;width:100%;border-bottom:1px solid var(--line)}
+  nav.primary a.active{border-bottom-color:var(--line)}
+  .masthead .wrap{position:relative}
+  .litters,.breeds,.steps,.parents,.pups,.foot-grid{grid-template-columns:1fr}
+  section.band{padding:3.5rem 0}
+  .utility .wrap{justify-content:center;font-size:.76rem}
+}
+
+/* ---------- host family page (Gastgezin) ---------- */
+.host-split{display:grid;grid-template-columns:1.08fr .92fr;gap:4rem;align-items:start}
+.host-split h2{margin-bottom:1.3rem}
+.host-split p{color:var(--ink-soft);margin-bottom:1.1rem}
+.host-split .ph{aspect-ratio:4/5}
+.host-points{list-style:none;display:grid;gap:1.15rem;margin:2rem 0 2.4rem}
+.host-points li{position:relative;padding-left:1.6rem;font-size:.95rem;color:var(--ink-soft)}
+.host-points li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:.5rem;height:.5rem;border-radius:50%;background:var(--brick);
+}
+.host-points strong{color:var(--ink);font-weight:600}
+.host-cta{
+  border:1px solid var(--line);background:#fff;padding:1.8rem;
+  display:grid;gap:.35rem;
+}
+.host-cta h3{margin-bottom:.6rem}
+.host-cta a{color:var(--brick);text-decoration:none;font-weight:500}
+.host-cta a:hover{text-decoration:underline;text-underline-offset:3px}
+.host-cta .note{font-size:.86rem;color:var(--ink-soft);margin-top:1rem}
+
+/* ---------- media page (photos & videos) ---------- */
+.gallery{
+  columns:4 220px;column-gap:1.1rem;
+}
+.gallery figure{
+  break-inside:avoid;margin-bottom:1.1rem;position:relative;overflow:hidden;
+  background:var(--paper-2);
+}
+.gallery img{width:100%;height:auto;transition:transform .4s ease}
+.gallery figure:hover img{transform:scale(1.03)}
+
+.videos{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.video{margin:0}
+.video .frame{
+  position:relative;aspect-ratio:16/9;overflow:hidden;
+  background:var(--sage-deep);border:1px solid var(--line);
+}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video figcaption{font-size:.88rem;color:var(--ink-soft);margin-top:.7rem}
+
+@media (max-width:960px){
+  .host-split{grid-template-columns:1fr;gap:2.5rem}
+  .videos{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .gallery{columns:2 140px;column-gap:.7rem}
+  .gallery figure{margin-bottom:.7rem}
+}
+
+/* ---------- responsive pass ---------- */
+
+/* six Dutch labels need every pixel between the burger and full width */
+@media (max-width:1180px){
+  nav.primary{gap:1.35rem}
+  .brand .tag{white-space:nowrap}
+}
+
+/* six nav items no longer fit beside the brand well before the phone breakpoint,
+   so the burger takes over early */
+@media (max-width:980px){
+  .masthead .wrap{position:relative}
+  .menu-btn{display:block}
+  nav.primary{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--line);padding:.5rem 4vw 1.2rem;
+    max-height:calc(100vh - 100%);overflow-y:auto;
+  }
+  nav.primary.open{display:flex}
+  nav.primary a{padding:.75rem 0;width:100%;border-bottom:1px solid var(--line)}
+  nav.primary a.active{border-bottom-color:var(--line)}
+}
+
+@media (max-width:1040px){
+  /* photo first, then the story — same order the hero already uses */
+  .host-split{grid-template-columns:1fr;gap:2.5rem}
+  .host-split > div:first-child{order:2}
+  .host-split .ph{order:1;aspect-ratio:3/2}
+  .videos{grid-template-columns:1fr}
+}
+
+@media (max-width:720px){
+  /* a full-width 4/5 portrait is a whole screen of dog on a phone */
+  .parent .ph,.split .ph{aspect-ratio:1}
+  .gallery{columns:2 140px;column-gap:.7rem}
+  .gallery figure{margin-bottom:.7rem}
+  .parent{padding:1.1rem}
+  .litter-head{align-items:flex-start}
+  .litter-head .btn{width:100%;text-align:center}
+  .banner{padding:2.6rem 0 2.4rem}
+  .foot-grid{gap:2rem}
+}
+
+@media (max-width:420px){
+  .brand-mark{width:42px;height:42px}
+  .brand .name{font-size:1.4rem}
+  .brand .tag{font-size:.62rem;letter-spacing:.1em}
+  .hero-actions{display:grid;gap:.7rem}
+  .hero-actions .btn{text-align:center}
+  .utility .wrap{gap:.5rem}
+  .util-contact{gap:.9rem;font-size:.74rem}
+}
+
+/* ---------- WALA accreditation (footer) ---------- */
+.accred{
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;
+  padding:2.4rem 0;border-bottom:1px solid rgba(255,255,255,.14);
+}
+.accred-badge{
+  background:#fff;border-radius:8px;padding:.9rem 1.1rem;
+  width:180px;flex:none;line-height:0;
+}
+.accred-badge img{width:100%;height:auto}
+.accred-text h4{margin-bottom:.5rem}
+.accred-text p{color:#B3AAA0;max-width:60ch;margin-bottom:1rem}
+.accred-meta{
+  display:grid;grid-template-columns:auto 1fr;gap:.3rem 1.2rem;
+  font-size:.86rem;align-items:baseline;
+}
+.accred-meta dt{color:#8F877E}
+.accred-meta dd{color:#E6E0D8;font-variant-numeric:tabular-nums}
+
+@media (max-width:720px){
+  .accred{grid-template-columns:1fr;gap:1.4rem;justify-items:start}
+  .accred-badge{width:150px}
+}
