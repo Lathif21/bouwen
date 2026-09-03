@@ -19,7 +19,7 @@
   });
 
   /* ---------- page routing ---------- */
-  var pages = ['home','pups','ouders','gastgezin','media','contact'];
+  var pages = ['home','honden','puppyinfo','werkwijze','gastgezin','media','contact'];
 
   function show(id){
     if (pages.indexOf(id) === -1) id = 'home';
