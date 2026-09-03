@@ -91,7 +91,27 @@ nav.primary a{
 nav.primary a{white-space:nowrap}
 nav.primary a:hover{color:var(--ink)}
 nav.primary a.active{color:var(--ink);border-bottom-color:var(--rose-deep)}
-.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:.5rem .8rem;font:inherit;cursor:pointer}
+.menu-btn{
+  display:none;background:none;border:1px solid var(--line);border-radius:8px;
+  width:46px;height:42px;padding:0;cursor:pointer;flex:none;
+  align-items:center;justify-content:center;
+}
+.menu-btn:hover{background:var(--paper-2)}
+.burger{position:relative;display:block;width:20px;height:14px}
+.burger span{
+  position:absolute;left:0;right:0;height:2px;border-radius:2px;
+  background:var(--ink);transition:transform .22s ease,opacity .15s ease;
+}
+.burger span:nth-child(1){top:0}
+.burger span:nth-child(2){top:6px}
+.burger span:nth-child(3){top:12px}
+.menu-btn[aria-expanded="true"] .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .burger span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -301,7 +321,7 @@ footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
 }
 @media (max-width:720px){
   body{font-size:16px}
-  .menu-btn{display:block}
+  .menu-btn{display:flex}
   nav.primary{
     display:none;position:absolute;top:100%;left:0;right:0;
     flex-direction:column;align-items:flex-start;gap:0;
@@ -378,7 +398,8 @@ footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
    so the burger takes over early */
 @media (max-width:1040px){
   .masthead .wrap{position:relative}
-  .menu-btn{display:block}
+  .menu-btn{display:flex}
+  .brand .tag{white-space:normal}
   nav.primary{
     display:none;position:absolute;top:100%;left:0;right:0;
     flex-direction:column;align-items:flex-start;gap:0;
